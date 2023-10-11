@@ -29,10 +29,18 @@ public class ARUIManager : MonoBehaviour
                 //Set scale, position and rotation
                 currentModelInstance.transform.localScale = inventory.inventoryItems[buttonNumber].defaultScale;
                 currentModelInstance.transform.localPosition = modelLocation.transform.localPosition;
-                Vector3 rotation = new Vector3((modelLocation.transform.rotation.eulerAngles.x + inventory.inventoryItems[buttonNumber].defaultRotation.x),
+                //currentModelInstance.transform.localRotation = modelLocation.transform.localRotation;
+
+                Vector3 rotation = new Vector3((modelLocation.transform.localRotation.eulerAngles.x + inventory.inventoryItems[buttonNumber].defaultRotation.x),
+                    (modelLocation.transform.localRotation.eulerAngles.y + inventory.inventoryItems[buttonNumber].defaultRotation.y),
+                    (modelLocation.transform.localRotation.eulerAngles.z + inventory.inventoryItems[buttonNumber].defaultRotation.z));
+                currentModelInstance.transform.localRotation = Quaternion.Euler(rotation);
+
+
+                /*Vector3 rotation = new Vector3((modelLocation.transform.rotation.eulerAngles.x + inventory.inventoryItems[buttonNumber].defaultRotation.x),
                     (modelLocation.transform.rotation.eulerAngles.y + inventory.inventoryItems[buttonNumber].defaultRotation.y),
                     (modelLocation.transform.rotation.eulerAngles.z + inventory.inventoryItems[buttonNumber].defaultRotation.z));
-                currentModelInstance.transform.rotation = Quaternion.Euler(rotation);
+                currentModelInstance.transform.rotation = Quaternion.Euler(rotation);*/
                 //currentModelInstance.transform.rotation = Quaternion.Euler(inventory.inventoryItems[buttonNumber].defaultRotation);
                 //Set mesh collider to be convex (this avoids holes in the mesh, which conflict with touch controls)
                 currentModelInstance.GetComponent<MeshCollider>().convex = true;
@@ -86,10 +94,10 @@ public class ARUIManager : MonoBehaviour
                 Vector3 miniModelNewPosition = new Vector3(miniModelInstance.transform.localPosition.x, miniModelInstance.transform.localPosition.y + offestY, miniModelInstance.transform.localPosition.z);
                 miniModelInstance.transform.localPosition = miniModelNewPosition;
 
-                Vector3 rotation = new Vector3((canvasButtonList[i].transform.rotation.eulerAngles.x + inventory.inventoryItems[i].defaultRotation.x),
-                    (canvasButtonList[i].transform.rotation.eulerAngles.y + inventory.inventoryItems[i].defaultRotation.y),
-                    (canvasButtonList[i].transform.rotation.eulerAngles.z + inventory.inventoryItems[i].defaultRotation.z));
-                miniModelInstance.transform.rotation = Quaternion.Euler(rotation);
+                Vector3 rotation = new Vector3((canvasButtonList[i].transform.localRotation.eulerAngles.x + inventory.inventoryItems[i].defaultRotation.x),
+                    (canvasButtonList[i].transform.localRotation.eulerAngles.y + inventory.inventoryItems[i].defaultRotation.y),
+                    (canvasButtonList[i].transform.localRotation.eulerAngles.z + inventory.inventoryItems[i].defaultRotation.z));
+                miniModelInstance.transform.localRotation = Quaternion.Euler(rotation);
 
                 //miniModelInstance.transform.rotation = Quaternion.Euler(inventory.inventoryItems[i].defaultRotation);
 

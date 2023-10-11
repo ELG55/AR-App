@@ -452,11 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 6665554598723052065}
+  graphSphere: {fileID: 6665554600299272928}
+  sineFunction: {fileID: 11400000, guid: 4b5375f9872e28f4ca7b410d49c3adee, type: 2}
   points: 30
-  amplitude: 0.5
-  frequency: 0.5
-  offsetX: -0.5
-  offsetY: 0.2
   xLimits: {x: 0, y: 1}
 --- !u!1 &6665554600245690276
 GameObject:
@@ -609,6 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xLineRenderer: {fileID: 6665554600649690733}
   yLineRenderer: {fileID: 6665554598596245276}
+  sineFunction: {fileID: 11400000, guid: 4b5375f9872e28f4ca7b410d49c3adee, type: 2}
   controlSphere: {fileID: 6665554600725508890}
 --- !u!1 &6665554600649690735
 GameObject:

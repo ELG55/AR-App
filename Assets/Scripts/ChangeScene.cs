@@ -11,17 +11,7 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void ResetARSession()
-    {
-        GameObject[] arSessionList = GameObject.FindGameObjectsWithTag("ARSession");
-        foreach (GameObject arSession in arSessionList)
-        if (arSession != null)
-        {
-            arSession.GetComponent<ARSession>().Reset();
-        }
-    }
-
-    public void ExitGame()
+    public void ExitApp()
     {
         Application.Quit();
     }

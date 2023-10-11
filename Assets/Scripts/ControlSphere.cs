@@ -12,6 +12,7 @@ public class ControlSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Leave an origin object for reference
         origin = new GameObject("Control sphere origin");
         origin.transform.SetParent(transform.parent);
         origin.transform.position = transform.position;
