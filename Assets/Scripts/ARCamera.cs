@@ -11,10 +11,4 @@ public class ARCamera : MonoBehaviour
         arCanvas = GetComponent<Canvas>();
         arCanvas.worldCamera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

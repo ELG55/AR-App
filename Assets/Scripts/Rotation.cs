@@ -30,15 +30,12 @@ public class Rotation : MonoBehaviour
 
     void OnMouseDown()
     {
-        //Rotating flag
         isRotating = true;
-        //Store mouse position
         mouseReference = Input.mousePosition;
     }
 
     void OnMouseUp()
     {
-        //Rotating flag
         isRotating = false;
     }
 }
