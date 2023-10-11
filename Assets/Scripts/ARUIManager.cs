@@ -29,19 +29,12 @@ public class ARUIManager : MonoBehaviour
                 //Set scale, position and rotation
                 currentModelInstance.transform.localScale = inventory.inventoryItems[buttonNumber].defaultScale;
                 currentModelInstance.transform.localPosition = modelLocation.transform.localPosition;
-                //currentModelInstance.transform.localRotation = modelLocation.transform.localRotation;
 
                 Vector3 rotation = new Vector3((modelLocation.transform.localRotation.eulerAngles.x + inventory.inventoryItems[buttonNumber].defaultRotation.x),
                     (modelLocation.transform.localRotation.eulerAngles.y + inventory.inventoryItems[buttonNumber].defaultRotation.y),
                     (modelLocation.transform.localRotation.eulerAngles.z + inventory.inventoryItems[buttonNumber].defaultRotation.z));
                 currentModelInstance.transform.localRotation = Quaternion.Euler(rotation);
 
-
-                /*Vector3 rotation = new Vector3((modelLocation.transform.rotation.eulerAngles.x + inventory.inventoryItems[buttonNumber].defaultRotation.x),
-                    (modelLocation.transform.rotation.eulerAngles.y + inventory.inventoryItems[buttonNumber].defaultRotation.y),
-                    (modelLocation.transform.rotation.eulerAngles.z + inventory.inventoryItems[buttonNumber].defaultRotation.z));
-                currentModelInstance.transform.rotation = Quaternion.Euler(rotation);*/
-                //currentModelInstance.transform.rotation = Quaternion.Euler(inventory.inventoryItems[buttonNumber].defaultRotation);
                 //Set mesh collider to be convex (this avoids holes in the mesh, which conflict with touch controls)
                 currentModelInstance.GetComponent<MeshCollider>().convex = true;
 
@@ -51,11 +44,6 @@ public class ARUIManager : MonoBehaviour
                 showingARModelCanvas = true;
             }
         }
-        
-        //Debug.Log("bounds size: "+ modelInstance.GetComponent<Renderer>().bounds.size);
-        /*float arModelCanvasVerticalSeparation = 0.1f;
-        Vector3 newARModelCanvasPosition = new Vector3(arModelCanvas.transform.localPosition.x, currentModelInstance.GetComponent<Renderer>().bounds.size.y + arModelCanvasVerticalSeparation, arModelCanvas.transform.localPosition.z);
-        arModelCanvas.transform.localPosition = newARModelCanvasPosition;*/
     }
 
     public void ARModelCanvasButton()
@@ -80,7 +68,6 @@ public class ARUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //foreach (GameObject obj in canvasButtonList)
         for (int i = 0; i < canvasButtonList.Count; i++)
         {
             if (i < inventory.inventoryItems.Count)
@@ -98,8 +85,6 @@ public class ARUIManager : MonoBehaviour
                     (canvasButtonList[i].transform.localRotation.eulerAngles.y + inventory.inventoryItems[i].defaultRotation.y),
                     (canvasButtonList[i].transform.localRotation.eulerAngles.z + inventory.inventoryItems[i].defaultRotation.z));
                 miniModelInstance.transform.localRotation = Quaternion.Euler(rotation);
-
-                //miniModelInstance.transform.rotation = Quaternion.Euler(inventory.inventoryItems[i].defaultRotation);
 
                 //Set the name of the item currently loading in the text object of the button (child of child)
                 canvasButtonList[i].transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = inventory.inventoryItems[i].itemName;

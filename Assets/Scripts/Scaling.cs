@@ -15,12 +15,13 @@ public class Scaling : MonoBehaviour
 
 		foreach (Touch touch in Input.touches)
 		{
-			fingersOnScreen++; //Count fingers (or rather touches) on screen as you iterate through all screen touches.
+			//Count touches on screen as this iterates through all screen touches
+			fingersOnScreen++;
 
-			//You need two fingers on screen to pinch.
+			//Two fingers on screen needed to pinch
 			if (fingersOnScreen == 2)
 			{
-				//First set the initial distance between fingers so you can compare.
+				//Set the initial distance between fingers so it can be compared
 				if (touch.phase == TouchPhase.Began)
 				{
 					initialFingersDistance = Vector2.Distance(Input.touches[0].position, Input.touches[1].position);
@@ -32,7 +33,6 @@ public class Scaling : MonoBehaviour
 
 					float scaleFactor = currentFingersDistance / initialFingersDistance;
 
-					//transform.localScale = initialScale * scaleFactor;
 					ScaleTransform.localScale = initialScale * scaleFactor;
 				}
 			}
@@ -41,6 +41,6 @@ public class Scaling : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		ScaleTransform = this.transform;
+		ScaleTransform = transform;
 	}
 }

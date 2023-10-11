@@ -29,21 +29,19 @@ public class GraphSphere : MonoBehaviour
 
         float distance = controlSphere.distance;
         float x = distance * 2;
-        //float amplitude = 0.5f;
-        //float frequency = 0.5f;
-        //float tau = 2 * Mathf.PI;
-        //float yValue = amplitude * Mathf.Sin(tau * frequency * customDistance);
         float yValue = sineFunction.CalculateYValue(x);
         transform.localPosition = new Vector3(startingPosition.x + x, startingPosition.y + yValue, startingPosition.z);
     }
 
     void Draw()
     {
+        //Drawing the horizontal line (x)
         xLineRenderer.positionCount = 2;
         Vector3 xStartPosition = new Vector3(startingPosition.x, transform.localPosition.y, transform.localPosition.z);
         xLineRenderer.SetPosition(0, xStartPosition);
         xLineRenderer.SetPosition(1, transform.localPosition);
 
+        //Drawing the vertical line (y)
         yLineRenderer.positionCount = 2;
         Vector3 yStartPosition = new Vector3(transform.localPosition.x, startingPosition.y, transform.localPosition.z);
         yLineRenderer.SetPosition(0, yStartPosition);

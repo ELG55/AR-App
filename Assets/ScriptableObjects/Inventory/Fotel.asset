@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: "Sill\xF3n"
   prefab: {fileID: 1806843409170209191, guid: 0a94bd08074ccfd4e938cda201930e63, type: 3}
   defaultRotation: {x: 0, y: 0, z: 0}
-  defaultScale: {x: 0.5, y: 0.5, z: 0.5}
+  defaultScale: {x: 0.4, y: 0.4, z: 0.4}
   inventoryViewScale: {x: 100, y: 100, z: 100}
