@@ -6,9 +6,11 @@ public class Graph : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public int points;
-    //public float amplitude = 1;
-    //public float frequency = 1;
-    public Vector2 xLimits = new Vector2(0, Mathf.PI);
+    public float amplitude = 0.5f;
+    public float frequency = 0.5f;
+    public float offsetX = -0.5f;
+    public float offsetY = 0.2f;
+    public Vector2 xLimits = new Vector2(0, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +30,11 @@ public class Graph : MonoBehaviour
         {
             float progress = (float)currentPoints / (points - 1);
             float x = Mathf.Lerp(xStart, xFinish, progress);
-            float y = Mathf.Sin(x);
-            lineRenderer.SetPosition(currentPoints, new Vector3(x, y, 0));
+            float y = offsetY + (amplitude * Mathf.Sin(tau * frequency * x));
+            lineRenderer.SetPosition(currentPoints, new Vector3(offsetX + x, y, transform.localPosition.z));
 
-            //In case a more detailed graph is needed
-            //float y = amplitude * Mathf.Sin(tau * frequency * x);
+            //In case a simpler graph is needed
+            //float y = Mathf.Sin(x);
         }
     }
 }

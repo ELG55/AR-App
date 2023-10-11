@@ -8,33 +8,43 @@ public class GraphSphere : MonoBehaviour
     public LineRenderer yLineRenderer;
     public ControlSphere controlSphere;
     private Vector3 startingPosition;
-    public float distance;
+    private GameObject origin;
 
     // Start is called before the first frame update
     void Start()
     {
-        startingPosition = transform.position;
+        origin = new GameObject("Graph sphere origin");
+        origin.transform.SetParent(transform.parent);
+        origin.transform.position = transform.position;
+        origin.transform.rotation = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        startingPosition = origin.transform.localPosition;
         Draw();
-        transform.position = new Vector3(startingPosition.x + controlSphere.distance, startingPosition.y + Mathf.Sin(controlSphere.distance), startingPosition.z);
-        //transform.position = new Vector3(controlSphere.transform.position.x, transform.position.y, transform.position.z);
-        //distance = startingPosition.x - transform.position.x;
+
+        float distance = controlSphere.distance;
+        float customDistance = distance * 2;
+        float amplitude = 0.5f;
+        float frequency = 0.5f;
+        //float offsetY = 0.2f;
+        float tau = 2 * Mathf.PI;
+        float yValue = amplitude * Mathf.Sin(tau * frequency * customDistance);
+        transform.localPosition = new Vector3(startingPosition.x + customDistance, startingPosition.y + yValue, startingPosition.z);
     }
 
     void Draw()
     {
         xLineRenderer.positionCount = 2;
-        Vector3 xStartPosition = new Vector3(transform.parent.position.x, transform.position.y, transform.position.z);
+        Vector3 xStartPosition = new Vector3(startingPosition.x, transform.localPosition.y, transform.localPosition.z);
         xLineRenderer.SetPosition(0, xStartPosition);
-        xLineRenderer.SetPosition(1, transform.position);
+        xLineRenderer.SetPosition(1, transform.localPosition);
 
         yLineRenderer.positionCount = 2;
-        Vector3 yStartPosition = new Vector3(transform.position.x, transform.parent.position.y, transform.position.z);
+        Vector3 yStartPosition = new Vector3(transform.localPosition.x, startingPosition.y, transform.localPosition.z);
         yLineRenderer.SetPosition(0, yStartPosition);
-        yLineRenderer.SetPosition(1, transform.position);
+        yLineRenderer.SetPosition(1, transform.localPosition);
     }
 }

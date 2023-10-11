@@ -19,13 +19,10 @@ public class Rotation : MonoBehaviour
         {
             //Offset
             mouseOffset = (Input.mousePosition - mouseReference);
-
             //Apply rotation
             rotation.y = -(mouseOffset.x + mouseOffset.y) * sensitivity;
-
             //Rotate
             gameObject.transform.Rotate(rotation);
-
             //Store new mouse position
             mouseReference = Input.mousePosition;
         }
@@ -33,16 +30,15 @@ public class Rotation : MonoBehaviour
 
     void OnMouseDown()
     {
-        // rotating flag
+        //Rotating flag
         isRotating = true;
-
-        // store mouse position
+        //Store mouse position
         mouseReference = Input.mousePosition;
     }
 
     void OnMouseUp()
     {
-        // rotating flag
+        //Rotating flag
         isRotating = false;
     }
 }
