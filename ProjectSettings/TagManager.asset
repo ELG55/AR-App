@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ControlSphere
   - Camera
+  - ARSession
   layers:
   - Default
   - TransparentFX
