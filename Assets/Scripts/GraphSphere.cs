@@ -6,6 +6,7 @@ public class GraphSphere : MonoBehaviour
 {
     public LineRenderer xLineRenderer;
     public LineRenderer yLineRenderer;
+    public SineFunction sineFunction;
     public ControlSphere controlSphere;
     private Vector3 startingPosition;
     private GameObject origin;
@@ -13,6 +14,7 @@ public class GraphSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Leave an origin object for reference
         origin = new GameObject("Graph sphere origin");
         origin.transform.SetParent(transform.parent);
         origin.transform.position = transform.position;
@@ -26,13 +28,13 @@ public class GraphSphere : MonoBehaviour
         Draw();
 
         float distance = controlSphere.distance;
-        float customDistance = distance * 2;
-        float amplitude = 0.5f;
-        float frequency = 0.5f;
-        //float offsetY = 0.2f;
-        float tau = 2 * Mathf.PI;
-        float yValue = amplitude * Mathf.Sin(tau * frequency * customDistance);
-        transform.localPosition = new Vector3(startingPosition.x + customDistance, startingPosition.y + yValue, startingPosition.z);
+        float x = distance * 2;
+        //float amplitude = 0.5f;
+        //float frequency = 0.5f;
+        //float tau = 2 * Mathf.PI;
+        //float yValue = amplitude * Mathf.Sin(tau * frequency * customDistance);
+        float yValue = sineFunction.CalculateYValue(x);
+        transform.localPosition = new Vector3(startingPosition.x + x, startingPosition.y + yValue, startingPosition.z);
     }
 
     void Draw()
